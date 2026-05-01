@@ -1119,6 +1119,7 @@ position: absolute;
 @keyframes designLoop {
     0%, 20% { opacity: 1; transform: scale(1) translateZ(0); z-index: 10; }
     25%, 100% { opacity: 0; transform: scale(0.8) translateZ(-100px); z-index: 1; }
+    
         /* Hover spread effect - clearer spacing */
  .carousel:hover .slide { animation: designLoop 10s infinite; }
 .carousel:hover .s1 { animation-delay: 0s; }
@@ -1126,32 +1127,12 @@ position: absolute;
 .carousel:hover .s3 { animation-delay: 4s; }
 .carousel:hover .s4 { animation-delay: 6s; }
 .carousel:hover .s5 { animation-delay: 8s; }
-        @media (max-width: 768px) {
-            .carousel {
-                height: 280px;
-                margin: 0 auto;
-                padding: 0;
-            }
-            
-            .slide {
-                width: 180px;
-                height: 260px;
-            }
-            
+
+        .portfolio-item:hover {
+    z-index: 999 !important;
+}
             /* Simplified mobile carousel - tighter stack */
-            .s1 { transform: translateX(0) scale(1); }
-            .s2 { transform: translateX(8px) scale(0.96); opacity: 0.7; }
-            .s3 { transform: translateX(16px) scale(0.92); opacity: 0.5; }
-            .s4 { transform: translateX(24px) scale(0.88); opacity: 0.3; }
-            .s5 { transform: translateX(32px) scale(0.84); opacity: 0.2; }
-            
-            /* Mobile hover - just show stack */
-            .carousel:hover .s1 { transform: translateX(0) scale(1.05); opacity: 1; }
-            .carousel:hover .s2 { transform: translateX(8px) scale(0.96); opacity: 0.7; }
-            .carousel:hover .s3 { transform: translateX(16px) scale(0.92); opacity: 0.5; }
-            .carousel:hover .s4 { transform: translateX(24px) scale(0.88); opacity: 0.3; }
-            .carousel:hover .s5 { transform: translateX(32px) scale(0.84); opacity: 0.2; }
-        }
+
 
         /* Extra fix for portfolio image wrapper on mobile */
         @media (max-width: 768px) {
