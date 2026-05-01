@@ -533,14 +533,10 @@
         }
 
         .portfolio-image-wrapper {
-      position: relative;
-     overflow: visible !important; /* Forces designs to show even if they spread */
-    height: 450px; 
-    background: var(--color-bg-tertiary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            background: var(--color-bg-tertiary);
         }
 
         .portfolio-image {
@@ -744,6 +740,131 @@
             margin-bottom: 2rem;
         }
 
+        /* Contact Form Styles */
+        .contact-form-wrapper {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, transparent 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .contact-form-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-accent-gold);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: var(--color-bg-secondary);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            color: var(--color-text-primary);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-accent-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            background: var(--color-bg-tertiary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--color-text-secondary);
+            opacity: 0.5;
+        }
+
+        .btn-form-submit {
+            width: 100%;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-loader {
+            display: inline-block;
+        }
+
+        .form-status {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-status.success {
+            display: block;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+        }
+
+        .form-status.error {
+            display: block;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+        }
+
+        @media (max-width: 768px) {
+            .contact-form-wrapper {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Footer */
         footer {
             background: var(--color-bg-secondary);
@@ -910,7 +1031,7 @@
             transform: translateY(0);
         }
 
-         /* Loading Animation */
+        /* Loading Animation */
         .page-loader {
             position: fixed;
             inset: 0;
@@ -965,53 +1086,105 @@
             0% { transform: translateX(-100%); }
             100% { transform: translateX(300%); }
         }
+
+        /* Carousel Styles - Fixed for Better Visibility */
         .carousel {
-       position: relative;
-    width: 6000px;      /* Increased to fill the card space */
-       height: 230px; 
-    perspective: 1200px;
-      margin: 20px auto; /* Centers it and adds top breathing room */
-      display: flex;
-    align-items: center;
-     justify-content: center;
-}
+            position: relative;
+            width: 100%;
+            height: 420px;
+            margin: 0 auto;
+            perspective: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: visible;
+        }
 
-.slide {
-position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Ensures design isn't cut off */
-    background: #111;    /* Matches your portfolio background[cite: 3] */
-    border-radius: 12px;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    opacity: 0;
-    transform: scale(0.8) translateZ(-100px);
-}
+        .slide {
+            position: absolute;
+            width: 280px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+        }
 
-/* stacked state */
-/* Base state: Show the first slide clearly[cite: 2] */
-.s1 { opacity: 1; transform: scale(1) translateZ(0); z-index: 5; }
+        /* Stacked state - cleaner overlap */
+        .s1 { transform: translateX(0) scale(1) translateZ(0); z-index: 5; }
+        .s2 { transform: translateX(15px) scale(0.95) translateZ(-50px); z-index: 4; opacity: 0.8; }
+        .s3 { transform: translateX(30px) scale(0.90) translateZ(-100px); z-index: 3; opacity: 0.6; }
+        .s4 { transform: translateX(45px) scale(0.85) translateZ(-150px); z-index: 2; opacity: 0.4; }
+        .s5 { transform: translateX(60px) scale(0.80) translateZ(-200px); z-index: 1; opacity: 0.2; }
 
-/* The Loop Animation[cite: 2] */
-@keyframes designLoop {
-    0%, 20% { opacity: 1; transform: scale(1) translateZ(0); z-index: 10; }
-    25%, 100% { opacity: 0; transform: scale(0.8) translateZ(-100px); z-index: 1; }
-}
-/* hover spread effect */
-.carousel:hover .slide { animation: designLoop 10s infinite;}
-.carousel:hover .s1 { animation-delay: 0s; }
-.carousel:hover .s2 { animation-delay: 2s; }
-.carousel:hover .s3 { animation-delay: 4s; }
-.carousel:hover .s4 { animation-delay: 6s; }
-.carousel:hover .s5 { animation-delay: 8s; }
+        /* Hover spread effect - clearer spacing */
+        .carousel:hover .s1 { 
+            transform: translateX(-200px) translateY(-10px) rotate(-8deg) scale(0.95); 
+            z-index: 5;
+            opacity: 1;
+        }
+        .carousel:hover .s2 { 
+            transform: translateX(-100px) translateY(-5px) rotate(-4deg) scale(0.95); 
+            z-index: 4;
+            opacity: 1;
+        }
+        .carousel:hover .s3 { 
+            transform: translateX(0) scale(1.05); 
+            z-index: 6;
+            opacity: 1;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+            border-color: var(--color-accent-gold);
+        }
+        .carousel:hover .s4 { 
+            transform: translateX(100px) translateY(-5px) rotate(4deg) scale(0.95); 
+            z-index: 4;
+            opacity: 1;
+        }
+        .carousel:hover .s5 { 
+            transform: translateX(200px) translateY(-10px) rotate(8deg) scale(0.95); 
+            z-index: 5;
+            opacity: 1;
+        }
 
-/* Forces card to front so hover effect isn't hidden[cite: 2] */
-.portfolio-item:hover {
-    z-index: 999 !important;
-}
-</style>
+        @media (max-width: 768px) {
+            .carousel {
+                height: 280px;
+                margin: 0 auto;
+                padding: 0;
+            }
+            
+            .slide {
+                width: 180px;
+                height: 260px;
+            }
+            
+            /* Simplified mobile carousel - tighter stack */
+            .s1 { transform: translateX(0) scale(1); }
+            .s2 { transform: translateX(8px) scale(0.96); opacity: 0.7; }
+            .s3 { transform: translateX(16px) scale(0.92); opacity: 0.5; }
+            .s4 { transform: translateX(24px) scale(0.88); opacity: 0.3; }
+            .s5 { transform: translateX(32px) scale(0.84); opacity: 0.2; }
+            
+            /* Mobile hover - just show stack */
+            .carousel:hover .s1 { transform: translateX(0) scale(1.05); opacity: 1; }
+            .carousel:hover .s2 { transform: translateX(8px) scale(0.96); opacity: 0.7; }
+            .carousel:hover .s3 { transform: translateX(16px) scale(0.92); opacity: 0.5; }
+            .carousel:hover .s4 { transform: translateX(24px) scale(0.88); opacity: 0.3; }
+            .carousel:hover .s5 { transform: translateX(32px) scale(0.84); opacity: 0.2; }
+        }
+
+        /* Extra fix for portfolio image wrapper on mobile */
+        @media (max-width: 768px) {
+            .portfolio-image-wrapper {
+                height: 300px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Page Loader -->
@@ -1109,7 +1282,7 @@ position: absolute;
             <div class="portfolio-featured fade-in">
                 <span class="featured-label">★ Featured Project</span>
                 <div class="featured-work">
-                    <img src="images/dbm-logo.png" alt="Designs By Murtaza - Brand Identity" class="featured-image" id="featuredLogo">
+                    <img src="dbm-logo-placeholder.jpg" alt="Designs By Murtaza - Brand Identity" class="featured-image" id="featuredLogo">
                     <div class="featured-info">
                         <div class="featured-category">Brand Identity</div>
                         <h3 class="featured-title">Designs By Murtaza</h3>
@@ -1125,7 +1298,7 @@ position: absolute;
             <div class="portfolio-grid">
                 <div class="portfolio-item fade-in">
                     <div class="portfolio-image-wrapper">
-                        <img src="images/flame-grill.png" alt="Flame Grill Food Advertisement" class="portfolio-image" id="flameGrill">
+                        <img src="flame-grill-placeholder.jpg" alt="Flame Grill Food Advertisement" class="portfolio-image" id="flameGrill">
                     </div>
                     <div class="portfolio-info">
                         <span class="portfolio-category">Social Media Post</span>
@@ -1139,7 +1312,7 @@ position: absolute;
 
                 <div class="portfolio-item fade-in">
                     <div class="portfolio-image-wrapper">
-                        <img src="images/urban-brew.png" alt="Urban Brew Coffee Promotion" class="portfolio-image" id="urbanBrew">
+                        <img src="urban-brew-placeholder.jpg" alt="Urban Brew Coffee Promotion" class="portfolio-image" id="urbanBrew">
                     </div>
                     <div class="portfolio-info">
                         <span class="portfolio-category">Social Media Post</span>
@@ -1153,7 +1326,7 @@ position: absolute;
 
                 <div class="portfolio-item fade-in">
                     <div class="portfolio-image-wrapper">
-                        <img src="images/keithson-logo.png" alt="Keithson Fashion Brand Logo" class="portfolio-image" id="keithsonLogo">
+                        <img src="keithson-logo-placeholder.jpg" alt="Keithson Fashion Brand Logo" class="portfolio-image" id="keithsonLogo">
                     </div>
                     <div class="portfolio-info">
                         <span class="portfolio-category">Logo Design</span>
@@ -1168,12 +1341,12 @@ position: absolute;
                 <div class="portfolio-item fade-in">
                     <div class="portfolio-image-wrapper">
                         <div class="carousel">
-  <img src="images/carousel-1.png" class="slide s1">
-  <img src="images/carousel-2.png" class="slide s2">
-  <img src="images/carousel-3.png" class="slide s3">
-  <img src="images/carousel-4.png" class="slide s4">
-  <img src="images/carousel-5.png" class="slide s5">
-</div>
+                            <img src="images/carousel-1.png" class="slide s1" alt="Carousel slide 1">
+                            <img src="images/carousel-2.png" class="slide s2" alt="Carousel slide 2">
+                            <img src="images/carousel-3.png" class="slide s3" alt="Carousel slide 3">
+                            <img src="images/carousel-4.png" class="slide s4" alt="Carousel slide 4">
+                            <img src="images/carousel-5.png" class="slide s5" alt="Carousel slide 5">
+                        </div>
                         <!-- <img src="carousel-placeholder.jpg" alt="Flame Grill Multi-Slide Carousel" class="portfolio-image" id="carousel"> -->
                     </div>
                     <div class="portfolio-info">
@@ -1270,11 +1443,35 @@ position: absolute;
                         </div>
                     </div>
                 </div>
-                <div class="contact-cta">
-                    <h3 class="contact-cta-title">Let's build something premium together.</h3>
-                    <a href="mailto:designsbymurtazapk@gmail.com" class="btn btn-primary">
-                        <span>Start a Project</span>
-                    </a>
+                <div class="contact-form-wrapper">
+                    <h3 class="contact-form-title">Let's build something premium together.</h3>
+                    <p class="contact-form-subtitle">Fill out the form below and I'll get back to you within 24 hours.</p>
+                    
+                    <form id="contactForm" action="https://formspree.io/f/xzdobjpa" method="POST" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Project Inquiry">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-form-submit">
+                            <span id="submitText">Send Message</span>
+                            <span id="submitLoader" class="submit-loader" style="display: none;">Sending...</span>
+                        </button>
+                        <div id="formStatus" class="form-status"></div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1292,7 +1489,7 @@ position: absolute;
                 <div class="social-links" style="margin-top: 1.5rem;">
                     <a href="https://instagram.com/designsby_murtaza" target="_blank" class="social-link">IG</a>
                     <a href="mailto:designsbymurtazapk@gmail.com" class="social-link">EM</a>
-                    <a href="https://www.linkedin.com/in/murtaza-muzaffar/" target="_blank" class="social-link">LI</a>
+                    <a href="https://www.linkedin.com/in/murtaza-muzaffar-81bb672b6" target="_blank" class="social-link">LI</a>
                 </div>
             </div>
             <div class="footer-section">
@@ -1384,11 +1581,11 @@ position: absolute;
 
         // Load Portfolio Images (Replace with actual image paths)
         const portfolioImages = {
-            featuredLogo: 'images/dbm-logo.png', // DBM Logo featured
-            flameGrill: 'images/flame-grill.png',
-            urbanBrew: 'images/urban-brew.png',
-            keithsonLogo: 'images/keithson-logo.png',
-            carousel: 'images/carousel-1.png' // First slide as preview
+            featuredLogo: '/mnt/user-data/uploads/5.png', // DBM Logo featured
+            flameGrill: '/mnt/user-data/uploads/Flame_Grill_For_insta.png',
+            urbanBrew: '/mnt/user-data/uploads/Coffee_insta_poster__20_off_.png',
+            keithsonLogo: '/mnt/user-data/uploads/Keithson.png',
+            carousel: '/mnt/user-data/uploads/1.png' // First slide as preview
         };
 
         // Set image sources
@@ -1452,6 +1649,67 @@ position: absolute;
                     card.style.setProperty('--mouse-x', `${x}px`);
                     card.style.setProperty('--mouse-y', `${y}px`);
                 });
+            });
+        }
+
+        // Contact Form Handling
+        const contactForm = document.getElementById('contactForm');
+        const submitText = document.getElementById('submitText');
+        const submitLoader = document.getElementById('submitLoader');
+        const formStatus = document.getElementById('formStatus');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Show loading state
+                submitText.style.display = 'none';
+                submitLoader.style.display = 'inline-block';
+                formStatus.style.display = 'none';
+                formStatus.className = 'form-status';
+                
+                const formData = new FormData(contactForm);
+                
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    // Reset button state
+                    submitText.style.display = 'inline-block';
+                    submitLoader.style.display = 'none';
+                    
+                    if (response.ok) {
+                        // Success
+                        formStatus.className = 'form-status success';
+                        formStatus.textContent = '✓ Message sent successfully! I\'ll get back to you within 24 hours.';
+                        formStatus.style.display = 'block';
+                        contactForm.reset();
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            formStatus.style.display = 'none';
+                        }, 5000);
+                    } else {
+                        // Error
+                        formStatus.className = 'form-status error';
+                        formStatus.textContent = '✗ Oops! Something went wrong. Please try again or email me directly.';
+                        formStatus.style.display = 'block';
+                    }
+                } catch (error) {
+                    // Reset button state
+                    submitText.style.display = 'inline-block';
+                    submitLoader.style.display = 'none';
+                    
+                    // Network error
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = '✗ Network error. Please check your connection and try again.';
+                    formStatus.style.display = 'block';
+                }
             });
         }
     </script>
